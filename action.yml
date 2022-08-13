@@ -9,8 +9,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Dump job context
+      run: echo '${{ toJSON(env) }}'
+      shell: bash
     - name: Log in to registry
-      run: echo "$GITHUB_TOKEN" | docker login ghcr.io -u $ --password-stdin
+      run: echo "$GITHUB_TOKEN" | docker login ghcr.io -u armandomeeuwenoord --password-stdin
       shell: bash
 
     - run: echo Workdir ${{ inputs.workdir }}.
