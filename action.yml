@@ -9,15 +9,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-#     - name: Login to DockerHub
-#       uses: docker/login-action@v2
-#       with:
-#         registry: ghcr.io
-#         username: ${{ github.repository_owner }}
-#         password: ${{ github.token }}
     - name: Log in to registry
-      # This is where you will update the PAT to GITHUB_TOKEN
       run: echo "$GITHUB_TOKEN" | docker login ghcr.io -u $ --password-stdin
+      shell: bash
 
     - run: echo Workdir ${{ inputs.workdir }}.
       shell: bash
