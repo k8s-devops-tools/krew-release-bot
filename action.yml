@@ -2,25 +2,14 @@
 name: "krew-release-bot"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
 runs:
-# <<<<<<< HEAD
-#   using: "docker"
-#   image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
-# =======
   using: "composite"
   steps:
-    - name: Login to GCR
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: armandomeeuwenoord
-        password: "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"
     - uses: addnab/docker-run-action@v3
       with:
         registry: ghcr.io
         username: armandomeeuwenoord
         password: "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"
         image: armandomeeuwenoord/krew-release-bot:v1.0.0
-        run: echo "hello world"
 
   # using: "docker"
   # image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
