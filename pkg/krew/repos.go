@@ -4,7 +4,7 @@ import "os"
 
 const (
 	krewIndexRepoName  = "krew-index"
-	krewIndexRepoOwner = "kubernetes-sigs"
+	krewIndexRepoOwner = "armandomeeuwenoord"
 )
 
 //GetKrewIndexRepoName returns the krew-index repo name
