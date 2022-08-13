@@ -7,9 +7,9 @@ runs:
     - uses: addnab/docker-run-action@v3
       with:
         registry: ghcr.io
-        username: armandomeeuwenoord
-        password: "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"
-        image: armandomeeuwenoord/krew-release-bot:v1.0.0
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        image: docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
 
   # using: "docker"
   # image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
