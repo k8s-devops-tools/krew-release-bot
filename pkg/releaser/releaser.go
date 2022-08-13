@@ -48,7 +48,7 @@ func New(ghToken string) *Releaser {
 		UpstreamKrewIndexRepoCloneURL: getCloneURL(krew.GetKrewIndexRepoOwner(), krew.GetKrewIndexRepoName()),
 		LocalKrewIndexRepo:            krew.GetKrewIndexRepoName(),
 		LocalKrewIndexRepoOwner:       tokenUserHandle,
-		LocalKrewIndexRepoCloneURL:    "https://github.com/krew-release-bot/krew-index.git",
+		LocalKrewIndexRepoCloneURL:    "https://github.com/armandomeeuwenoord/krew-index.git",
 	}
 }
 

@@ -137,5 +137,5 @@ func getWebhookURL() string {
 		return os.Getenv("KREW_RELEASE_BOT_WEBHOOK_URL")
 	}
 
-	return "https://krew-release-bot.rajatjindal.com/github-action-webhook"
+	return "https://gw-openfaas.meeuwenoord.eu/function/github-action-webhook"
 }
