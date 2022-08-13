@@ -8,5 +8,5 @@ inputs:
     description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
 runs:
   using: "docker"
-  image: "docker://armandomeeuwenoord/krew-release-bot:v1.0.0"
+  image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
 # 
