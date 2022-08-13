@@ -7,47 +7,6 @@ inputs:
   krew_template_file:
     description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
 runs:
-  using: "composite"
-  steps:
-    - name: Dump job context
-      run: echo '${{ toJSON(env) }}'
-      shell: bash
-    - name: Log in to registry
-      run: echo "$GITHUB_TOKEN" | docker login ghcr.io -u armandomeeuwenoord --password-stdin
-      shell: bash
-
-    - run: echo Workdir ${{ inputs.workdir }}.
-      shell: bash
-    - run: echo Template ${{ inputs.krew_template_file }}.
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - name: Dump GitHub context
-      id: github_context_step
-      run: echo '${{ toJSON(github) }}'
-      shell: bash
-    - name: Dump job context
-      run: echo '${{ toJSON(job) }}'
-      shell: bash
-    - name: Dump steps context
-      run: echo '${{ toJSON(steps) }}'
-      shell: bash
-    - name: Dump runner context
-      run: echo '${{ toJSON(runner) }}'
-      shell: bash
-    - name: Dump strategy context
-      run: echo '${{ toJSON(strategy) }}'
-      shell: bash
-    - name: Dump matrix context
-      run: echo '${{ toJSON(matrix) }}' 
-      shell: bash
-    # - uses: addnab/docker-run-action@v3
-    #   with:
-    #     registry: ghcr.io
-    #     username: ${{ github.repository_owner }}
-    #     password: ${{ github.token }}
-    #     image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
-    #     run: |
-    #       echo "Running Script"
-    #       krew-release-bot action
-    - uses: docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
+  using: "docker"
+  image: "docker://armandomeeuwenoord/krew-release-bot:v1.0.0"
+# 
