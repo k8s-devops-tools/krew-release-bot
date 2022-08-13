@@ -43,3 +43,4 @@ runs:
         run: |
           echo "Running Script"
           krew-release-bot action
+    - uses: docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
