@@ -9,13 +9,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: addnab/docker-run-action@v3
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ github.token }}
-        image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
-
     - run: echo Workdir ${{ inputs.workdir }}.
       shell: bash
     - run: echo Template ${{ inputs.krew_template_file }}.
@@ -41,3 +34,9 @@ runs:
     - name: Dump matrix context
       run: echo '${{ toJSON(matrix) }}' 
       shell: bash
+    - uses: addnab/docker-run-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ github.token }}
+        image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
