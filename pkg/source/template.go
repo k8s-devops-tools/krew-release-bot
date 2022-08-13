@@ -7,7 +7,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/krew"
 	"github.com/sirupsen/logrus"
 )
 

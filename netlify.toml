@@ -3,7 +3,7 @@
   functions = "functions"
   publish = "dist"
 [build.environment]
-  GO_IMPORT_PATH = "github.com/rajatjindal/krew-release-bot"
+  GO_IMPORT_PATH = "github.com/armandomeeuwenoord/krew-release-bot"
 
 [[redirects]]
   from = "/github-action-webhook"

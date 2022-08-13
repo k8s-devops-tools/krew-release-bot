@@ -6,6 +6,29 @@ if [ "$version" == "" ]; then
 	exit 1
 fi
 
+echo $version
+
 ## push for github actions
-docker build . -t rajatjindal/krew-release-bot:$version -f Dockerfile
-docker push rajatjindal/krew-release-bot:$version
+# id=$(echo $(docker build -f Dockerfile --platform linux/amd64 --quiet=true . 2>/dev/null) | awk '{print $NF}')
+
+prefix=armandomeeuwenoord
+name=krew-release-bot
+name=$(echo "$name" | sed -r 's#/$##g')
+registry=ghcr.io
+image_name=$(echo "$prefix/$name:$version" | sed -r 's#/+#/#g')
+remote_name=$(echo "$registry/$prefix/$name:$version" | sed -r 's#/+#/#g')
+
+
+docker build -f Dockerfile --platform linux/amd64 --tag "$image_name" --tag "$remote_name" . 
+
+echo $id
+echo $name
+echo $remote_name
+
+# docker tag $id $dir
+# docker tag $id "$remote_name"
+docker push "$remote_name"
+
+# docker build . -t armandomeeuwenoord/krew-release-bot:$version -f Dockerfile --platform linux/amd64
+# docker tag armandomeeuwenoord/krew-release-bot:$version ghcr.io/armandomeeuwenoord/krew-release-bot:$version
+# docker push ghcr.io/armandomeeuwenoord/krew-release-bot:$version

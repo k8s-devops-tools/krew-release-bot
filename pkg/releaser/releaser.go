@@ -7,8 +7,8 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/pkg/errors"
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
-	"github.com/rajatjindal/krew-release-bot/pkg/source/actions"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/krew"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source/actions"
 )
 
 //Releaser is what opens PR

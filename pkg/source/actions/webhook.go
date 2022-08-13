@@ -9,7 +9,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/google/go-github/v29/github"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
 )
 
 //GithubActions is github webhook handler

@@ -1,4 +1,4 @@
-module github.com/rajatjindal/krew-release-bot
+module github.com/armandomeeuwenoord/krew-release-bot
 
 go 1.17
 

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/go-github/v29/github"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 	"gopkg.in/src-d/go-git.v4"
@@ -182,7 +182,7 @@ func (r *Releaser) getHead(request *source.ReleaseRequest) *string {
 func (r *Releaser) getPRBody(request *source.ReleaseRequest) *string {
 	prBody := `hey krew-index team,
 
-I am [krew-release-bot](https://github.com/rajatjindal/krew-release-bot), and I would like to open this PR to publish version %s of %s on behalf of @%s.
+I am [krew-release-bot](https://github.com/armandomeeuwenoord/krew-release-bot), and I would like to open this PR to publish version %s of %s on behalf of @%s.
 
 Thanks,
 @krew-release-bot`

@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/google/go-github/v29/github"
-	"github.com/rajatjindal/krew-release-bot/pkg/cicd"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/cicd"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )

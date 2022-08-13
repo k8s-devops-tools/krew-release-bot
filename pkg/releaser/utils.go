@@ -7,8 +7,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rajatjindal/krew-release-bot/pkg/krew"
-	"github.com/rajatjindal/krew-release-bot/pkg/source"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/krew"
+	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 )
 
