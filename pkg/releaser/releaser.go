@@ -7,6 +7,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/pkg/errors"
+	handler "github.com/openfaas/templates-sdk/go-http"
 	"github.com/armandomeeuwenoord/krew-release-bot/pkg/krew"
 	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source/actions"
 )
@@ -53,10 +54,10 @@ func New(ghToken string) *Releaser {
 }
 
 //HandleActionLambdaWebhook handles requests from github actions
-func (releaser *Releaser) HandleActionLambdaWebhook(ctx context.Context, request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
+func (releaser *Releaser) HandleActionLambdaWebhook(ctx context.Context, request handler.Request) (*handler.Response, error) {
 	hook, err := actions.NewGithubActions()
 	if err != nil {
-		return &events.APIGatewayProxyResponse{
+		return &handler.Response{
 			StatusCode: http.StatusInternalServerError,
 			Body:       errors.Wrap(err, "creating instance of action handler").Error(),
 		}, nil
