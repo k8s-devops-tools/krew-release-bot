@@ -1,20 +1,37 @@
 # action.yml
 name: "krew-release-bot"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
+inputs:
+  workdir:
+    description: "Working directory, defaults to env.GITHUB_WORKSPACE"
+  krew_template_file:
+    description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
 runs:
   using: "composite"
   steps:
     - uses: addnab/docker-run-action@v3
       with:
         registry: ghcr.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        image: docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
+        username: ${{ github.repository_owner }}
+        password: ${{ github.token }}
+        image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
 
-  # using: "docker"
-  # image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
-inputs:
-  workdir:
-    description: "Working directory, defaults to env.GITHUB_WORKSPACE"
-  krew_template_file:
-    description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
+    - run: echo Workdir ${{ inputs.workdir }}.
+      shell: bash
+    - run: echo Template ${{ inputs.krew_template_file }}.
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - name: Dump GitHub context
+      id: github_context_step
+      run: echo '${{ toJSON(github) }}'
+    - name: Dump job context
+      run: echo '${{ toJSON(job) }}'
+    - name: Dump steps context
+      run: echo '${{ toJSON(steps) }}'
+    - name: Dump runner context
+      run: echo '${{ toJSON(runner) }}'
+    - name: Dump strategy context
+      run: echo '${{ toJSON(strategy) }}'
+    - name: Dump matrix context
+      run: echo '${{ toJSON(matrix) }}' 
