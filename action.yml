@@ -40,3 +40,6 @@ runs:
         username: ${{ github.repository_owner }}
         password: ${{ github.token }}
         image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
+        run: |
+          echo "Running Script"
+          krew-release-bot action
