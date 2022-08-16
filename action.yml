@@ -2,11 +2,14 @@
 name: "krew-release-bot"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
 inputs:
+  registry_token:
+    description: ""
   workdir:
     description: "Working directory, defaults to env.GITHUB_WORKSPACE"
   krew_template_file:
     description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
 runs:
   using: "docker"
+  pre: echo ${{ inputs.registry_token }} | docker login ghcr.io -u armandomeeuwenoord --password-stdin|
   image: "docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0"
-# 
+  
