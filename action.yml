@@ -3,7 +3,7 @@ name: "krew-release-bot"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/k8s-devops-tools/krew-release-bot:v1.0.0"
+  image: "Dockerfile.run"
 inputs:
   registry_token:
     description: ""
