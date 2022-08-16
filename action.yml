@@ -1,7 +1,9 @@
 # action.yml
 name: "krew-release-bot"
-owner: "k8s-devops-tools"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/k8s-devops-tools/krew-release-bot:v1.0.0"
 inputs:
   registry_token:
     description: ""
@@ -9,8 +11,3 @@ inputs:
     description: "Working directory, defaults to env.GITHUB_WORKSPACE"
   krew_template_file:
     description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
-runs:
-  using: "docker"
-#   pre: echo ${{ inputs.registry_token }} | docker login ghcr.io -u k8s-devops-tools --password-stdin|
-  image: "docker://ghcr.io/k8s-devops-tools/krew-release-bot:v1.0.0"
-  
