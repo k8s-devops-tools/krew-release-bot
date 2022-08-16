@@ -44,6 +44,10 @@ runs:
     - name: Dump matrix context
       run: echo '${{ toJSON(matrix) }}' 
       shell: bash
+      
+    - name: Environment
+      run: env 
+      shell: bash
 
         
         
@@ -53,9 +57,13 @@ runs:
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
         image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
-        shell: '/bin/bash'
+        shell: 'bash'
         options: -v ${{ github.workspace }}:/work -e ABC=123
-        run: env && krew-release-bot action
+        run: |
+          echo "Running Script"
+          ls -lsa /work
+          env && krew-release-bot action
+          
 #     - uses: addnab/docker-run-action@v3
 #       with:
 #         image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
