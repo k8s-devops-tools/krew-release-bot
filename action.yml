@@ -46,7 +46,7 @@ runs:
       shell: bash
       
     - name: Environment
-      run: cp $GITHUB_ENV > /home/runner/work/krew-plugin-template/krew-plugin-template/.env
+      run: cp $GITHUB_ENV /home/runner/work/krew-plugin-template/krew-plugin-template/.env
       shell: bash
 
         
