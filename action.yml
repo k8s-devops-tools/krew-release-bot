@@ -1,5 +1,6 @@
 # action.yml
 name: "krew-release-bot"
+owner: "k8s-devops-tools"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
 inputs:
   registry_token:
