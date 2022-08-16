@@ -52,7 +52,7 @@ runs:
         registry: ${{ inputs.registry }}
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
-        image: k8s-devops-tools/krew-release-bot:latest
+        image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
         run: echo "hello world"
 #     - uses: addnab/docker-run-action@v3
 #       with:
