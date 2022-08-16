@@ -46,7 +46,7 @@ runs:
       shell: bash
       
     - name: Environment
-      run: env && echo $GITHUB_ENV && cat $GITHUB_ENV
+      run: cat $GITHUB_ENV > $GITHUB_WORKSPACE/.env
       shell: bash
 
         
@@ -58,7 +58,7 @@ runs:
         password: ${{ inputs.password }}
         image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
         shell: 'bash'
-        options: -v ${{ github.workspace }}:/home/app -e ABC=123 --env-file ${{ github.env }}
+        options: -v ${{ github.workspace }}:/home/app -e ABC=123 --env-file ${{ github.workspace }}/.env
         run: |
           echo "Running Script"
           echo $GITHUB_ENV
