@@ -61,6 +61,7 @@ runs:
         options: -v ${{ github.workspace }}:/work -e ABC=123
         run: |
           echo "Running Script"
+          cat $GITHUB_ENV
           ls -lsa /work
           env && krew-release-bot action
           
