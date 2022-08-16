@@ -1,8 +1,23 @@
-# Container image that runs your code
-FROM ghcr.io/k8s-devops-tools/krew-release-bot@sha256:ff6748c6746bb7cddfbc3d8f8b52b5f773f3cce0d60faa9a7a6cfb246eea77ab
+FROM golang:1.17-alpine3.15 as builder
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+WORKDIR /go/src/github.com/k8s-devops-tools/krew-release-bot
+COPY . .
 
-# Executes `entrypoint.sh` when the Docker container starts up
-ENTRYPOINT ["/entrypoint.sh"]
+# RUN CGO_ENABLED=0 GOOS=linux go test -mod vendor ./... -cover
+RUN CGO_ENABLED=0 GOOS=linux go build -mod vendor --ldflags "-s -w" -o krew-release-bot cmd/action/*
+
+FROM alpine:3.15
+
+RUN apk add bash
+
+WORKDIR /home/app
+
+# Add non root user
+RUN addgroup -S app && adduser app -S -G app
+RUN chown app /home/app
+
+USER app
+
+COPY --from=builder /go/src/github.com/k8s-devops-tools/krew-release-bot/krew-release-bot /usr/local/bin/
+
+CMD ["krew-release-bot", "action"]
