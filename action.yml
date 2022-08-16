@@ -52,7 +52,7 @@ runs:
         password: ${{ inputs.password }}
     - uses: addnab/docker-run-action@v3
       with:
-        image: ghcr.io/k8s-devops/krew-release-bot:latest
+        image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
         run: echo "hello world"
         
 #     - uses: addnab/docker-run-action@v3
