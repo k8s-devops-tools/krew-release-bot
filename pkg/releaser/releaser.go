@@ -6,8 +6,8 @@ import (
 
 	handler "github.com/openfaas/templates-sdk/go-http"
 	"github.com/pkg/errors"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/krew"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source/actions"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/krew"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/source/actions"
 )
 
 // Releaser is what opens PR
@@ -47,7 +47,7 @@ func New(ghToken string) *Releaser {
 		UpstreamKrewIndexRepoCloneURL: getCloneURL(krew.GetKrewIndexRepoOwner(), krew.GetKrewIndexRepoName()),
 		LocalKrewIndexRepo:            krew.GetKrewIndexRepoName(),
 		LocalKrewIndexRepoOwner:       tokenUserHandle,
-		LocalKrewIndexRepoCloneURL:    "https://github.com/armandomeeuwenoord/krew-index.git",
+		LocalKrewIndexRepoCloneURL:    "https://github.com/k8s-devops-tools/krew-index.git",
 	}
 }
 

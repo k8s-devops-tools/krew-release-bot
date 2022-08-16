@@ -54,14 +54,14 @@ func TestGetKrewIndexRepoOwner(t *testing.T) {
 	}{
 		{
 			name:     "env variable is not set",
-			expected: "armandomeeuwenoord",
+			expected: "k8s-devops-tools",
 		},
 		{
 			name: "env variable is set to empty value",
 			setup: func() {
 				os.Setenv("UPSTREAM_KREW_INDEX_REPO_OWNER", "")
 			},
-			expected: "armandomeeuwenoord",
+			expected: "k8s-devops-tools",
 		},
 		{
 			name: "env variable is set to value",

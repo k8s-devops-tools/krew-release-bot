@@ -11,7 +11,7 @@ echo $version
 ## push for github actions
 # id=$(echo $(docker build -f Dockerfile --platform linux/amd64 --quiet=true . 2>/dev/null) | awk '{print $NF}')
 
-prefix=armandomeeuwenoord
+prefix=k8s-devops-tools
 name=krew-release-bot
 name=$(echo "$name" | sed -r 's#/$##g')
 registry=ghcr.io
@@ -29,6 +29,6 @@ echo $remote_name
 # docker tag $id "$remote_name"
 docker push "$remote_name"
 
-# docker build . -t armandomeeuwenoord/krew-release-bot:$version -f Dockerfile --platform linux/amd64
-# docker tag armandomeeuwenoord/krew-release-bot:$version ghcr.io/armandomeeuwenoord/krew-release-bot:$version
-# docker push ghcr.io/armandomeeuwenoord/krew-release-bot:$version
+# docker build . -t k8s-devops-tools/krew-release-bot:$version -f Dockerfile --platform linux/amd64
+# docker tag k8s-devops-tools/krew-release-bot:$version ghcr.io/k8s-devops-tools/krew-release-bot:$version
+# docker push ghcr.io/k8s-devops-tools/krew-release-bot:$version

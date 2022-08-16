@@ -3,9 +3,9 @@ package cicd
 import (
 	"os"
 
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/cicd/circleci"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/cicd/github"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/cicd/travisci"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/cicd/circleci"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/cicd/github"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/cicd/travisci"
 )
 
 //Provider defines CI/CD provider interface

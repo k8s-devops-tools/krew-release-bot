@@ -1,6 +1,6 @@
 FROM golang:1.17-alpine3.15 as builder
 
-WORKDIR /go/src/github.com/armandomeeuwenoord/krew-release-bot
+WORKDIR /go/src/github.com/k8s-devops-tools/krew-release-bot
 COPY . .
 
 # RUN CGO_ENABLED=0 GOOS=linux go test -mod vendor ./... -cover
@@ -16,6 +16,6 @@ RUN chown app /home/app
 
 USER app
 
-COPY --from=builder /go/src/github.com/armandomeeuwenoord/krew-release-bot/krew-release-bot /usr/local/bin/
+COPY --from=builder /go/src/github.com/k8s-devops-tools/krew-release-bot/krew-release-bot /usr/local/bin/
 
 CMD ["krew-release-bot", "action"]

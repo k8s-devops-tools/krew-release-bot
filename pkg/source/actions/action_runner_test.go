@@ -113,7 +113,7 @@ func TestRunAction(t *testing.T) {
 				gock.New("https://krew-release-bot.rajatjindal.com").
 					Post("/github-action-webhook").
 					Reply(200).
-					JSON("PR https://github.com/armandomeeuwenoord/krew-index/pull/26 opened successfully")
+					JSON("PR https://github.com/k8s-devops-tools/krew-index/pull/26 opened successfully")
 
 			},
 		},

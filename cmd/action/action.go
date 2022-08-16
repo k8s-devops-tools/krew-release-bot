@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source/actions"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/source/actions"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/source"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/aws/aws-lambda-go/events"
+	handler "github.com/openfaas/templates-sdk/go-http"
 	"github.com/google/go-github/v29/github"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/source"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/source"
 )
 
 //GithubActions is github webhook handler
@@ -38,7 +38,7 @@ func (w *GithubActions) Parse(r *http.Request) (*source.ReleaseRequest, error) {
 }
 
 //ParseLambdaRequest parses the request from lambda request object
-func (w *GithubActions) ParseLambdaRequest(r events.APIGatewayProxyRequest) (*source.ReleaseRequest, error) {
+func (w *GithubActions) ParseLambdaRequest(r handler.Request) (*source.ReleaseRequest, error) {
 	request := &source.ReleaseRequest{}
 	err := json.Unmarshal([]byte(r.Body), request)
 	if err != nil {

@@ -1,4 +1,4 @@
-module github.com/armandomeeuwenoord/krew-release-bot
+module github.com/k8s-devops-tools/krew-release-bot
 
 go 1.17
 

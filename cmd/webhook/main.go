@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/armandomeeuwenoord/krew-release-bot/pkg/releaser"
+	"github.com/k8s-devops-tools/krew-release-bot/pkg/releaser"
 )
 
 func main() {

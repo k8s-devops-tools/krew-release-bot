@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cfd72dea-e22a-463b-8e20-5748b743140a/deploy-status)](https://app.netlify.com/sites/angry-borg-f9dd47/deploys)
 
-<a href="https://github.com/armandomeeuwenoord/krew-release-bot"><img src="https://github.com/krew-release-bot.png" width="100"></a><span width="10px">
+<a href="https://github.com/k8s-devops-tools/krew-release-bot"><img src="https://github.com/krew-release-bot.png" width="100"></a><span width="10px">
 
 `krew-release-bot` is a bot that automates the update of plugin manifests in `krew-index` when a new version of your `kubectl` plugin is released.
 If a release is marked as a 'prerelease' in github, it will not be released to the krew index.
@@ -15,7 +15,7 @@ To trigger `krew-release-bot` you can use a `github-action` which sends the even
 - To setup the action, add the following snippet after the step that publishes the new release and assets:
   ```yaml
   - name: Update new version in krew-index
-    uses: armandomeeuwenoord/krew-release-bot@v0.0.43
+    uses: k8s-devops-tools/krew-release-bot@v0.0.43
   ```
   Check out the `goreleaser` example below for details.
 
@@ -47,7 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update new version in krew-index
-        uses: armandomeeuwenoord/krew-release-bot@v0.0.43
+        uses: k8s-devops-tools/krew-release-bot@v0.0.43
 ```
 
 \*\* You can also customize the release assets names, platforms for which build is done using .goreleaser.yml file in root of your git repo.
@@ -64,7 +64,7 @@ jobs:
 You can test the template file rendering before check-in to the repo by running following command
 
 ```bash
-$ docker run -v /path/to/your/template-file.yaml:/tmp/template-file.yaml armandomeeuwenoord/krew-release-bot:v0.0.43 \
+$ docker run -v /path/to/your/template-file.yaml:/tmp/template-file.yaml k8s-devops-tools/krew-release-bot:v0.0.43 \
   krew-release-bot template --tag <tag-name> --template-file /tmp/template-file.yaml
 ```
 
