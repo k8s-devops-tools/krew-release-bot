@@ -1,13 +1,67 @@
 # action.yml
 name: "krew-release-bot"
 description: "automatically opens PR for upstream krew-index repo when you publish new release of your awesome plugin"
-runs:
-  using: "docker"
-  image: "Dockerfile"
 inputs:
-  registry_token:
-    description: ""
+  registry:
+    description: 'Server address of Docker registry. If not set then will default to Docker Hub'
+    default: 'ghcr.io'
+    required: false
+  username:
+    description: 'Username used to log against the Docker registry'
+    required: false
+  password:
+    description: 'Password or personal access token used to log against the Docker registry'
+    required: false
   workdir:
     description: "Working directory, defaults to env.GITHUB_WORKSPACE"
   krew_template_file:
     description: "the path to template file relative to $workdir. e.g. templates/misc/plugin-name.yaml. defaults to .krew.yaml"
+runs:
+  using: "composite"
+  steps:
+    - run: echo Workdir ${{ inputs.workdir }}.
+      shell: bash
+    - run: echo Template ${{ inputs.krew_template_file }}.
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - name: Dump GitHub context
+      id: github_context_step
+      run: echo '${{ toJSON(github) }}'
+      shell: bash
+    - name: Dump job context
+      run: echo '${{ toJSON(job) }}'
+      shell: bash
+    - name: Dump steps context
+      run: echo '${{ toJSON(steps) }}'
+      shell: bash
+    - name: Dump runner context
+      run: echo '${{ toJSON(runner) }}'
+      shell: bash
+    - name: Dump strategy context
+      run: echo '${{ toJSON(strategy) }}'
+      shell: bash
+    - name: Dump matrix context
+      run: echo '${{ toJSON(matrix) }}' 
+      shell: bash
+    - name: Log in to the Container registry
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        registry: ${{ inputs.registry }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
+    - uses: addnab/docker-run-action@v3
+      with:
+        image: ghcr.io/k8s-devops/krew-release-bot:latest
+        run: echo "hello world"
+        
+#     - uses: addnab/docker-run-action@v3
+#       with:
+#         registry: ghcr.io
+#         username: ${{ github.repository_owner }}
+#         password: ${{ github.token }}
+#         image: ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
+#         run: |
+#           echo "Running Script"
+#           krew-release-bot action
+#     - uses: docker://ghcr.io/armandomeeuwenoord/krew-release-bot:v1.0.0
