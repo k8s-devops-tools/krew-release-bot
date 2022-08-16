@@ -53,6 +53,7 @@ runs:
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
         image: ghcr.io/k8s-devops-tools/krew-release-bot:latest
+        shell: bash
         run: env && krew-release-bot action
 #     - uses: addnab/docker-run-action@v3
 #       with:
